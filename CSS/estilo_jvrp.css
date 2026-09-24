@@ -1,0 +1,710 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f4f4f4;
+  color: #111;
+}
+
+/* HEADER */
+.header_loja {
+  background: #ffd100;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo_loja {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  font-family: "BANGERS", sans-serif;
+}
+
+
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  background: #080d17;
+}
+
+/* A altura acompanha a imagem para preservar o banner inteiro. */
+.hero picture {
+  display: block;
+  width: 100%;
+}
+
+.hero .hero-banner {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* O botão pertence à página; a arte permanece sem botão. */
+.hero-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  padding: clamp(8px, 1vw, 20px) clamp(12px, 1.6vw, 30px);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.hero-cta .btn_loja {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* Em telas menores, o botão fica abaixo da arte para não cobrir os textos. */
+@media (max-width: 1100px) {
+  .hero-cta {
+    position: static;
+    transform: none;
+    padding: 14px 16px 18px;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.hero-content iframe {
+  display: block;
+  border: none;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.btn_loja {
+  background: #d62828;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn_loja:hover {
+  background: #a4161a;
+}
+
+/* PRODUTOS */
+.container_loja {
+  width: min(1400px, 95%);
+  margin: 50px auto;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+}
+
+.titulo {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 60px;
+  position: relative;
+  border: none;
+  padding-left: 30px;
+  margin-bottom: 15px;
+}
+
+.titulo::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  /* ajuste fino */
+  top: -5px;
+
+  width: 6px;
+  height: 70px;
+
+  background: #ffd100;
+  border-radius: 5px;
+}
+
+.subtitulo {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card_loja {
+  width: 400px;
+  height: 830px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  transition: .1s;
+  box-sizing: content-box;
+}
+
+
+.card_loja:hover {
+  transform: translateY(-8px);
+}
+
+.card_loja img {
+  width: 400px;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.card-content_loja {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  height: 100%;
+}
+
+.card-content_loja p {
+  line-height: 1.6;
+}
+
+.mangas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 50px;
+  justify-items: center;
+  align-items: start;
+
+}
+
+.card_loja h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.preco {
+  color: #d62828;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.comprar {
+  display: block;
+  text-align: center;
+  background: #111;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.comprar:hover {
+  background: #d62828;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 40px;
+}
+
+.newsletter h2 {
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+
+.newsletter input {
+  padding: 12px;
+  width: 300px;
+  max-width: 90%;
+  border: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  border: none;
+  background: #ffd100;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover {
+  background: #ffb703;
+}
+
+/* FOOTER */
+footer {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+@media(max-width:768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}
+
+.categoria {
+  display: inline-block;
+  background: #ffd100;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+/* inicio.php */
+
+.container_index {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.titulo_index {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 55px;
+  position: relative;
+  border: none;
+  padding-left: 30px;
+  margin-bottom: 15px;
+}
+
+.titulo_index::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  /* ajuste fino */
+  top: -5px;
+
+  width: 6px;
+  height: 62px;
+
+  background: #ffd100;
+  border-radius: 5px;
+}
+
+.titulo_index_video {
+  position: relative;
+  text-align: center;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+}
+
+.titulo_index_video::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+
+  width: 280px;
+  height: 5px;
+
+  background: #ffd100;
+  border-radius: 10px;
+
+}
+
+.produtos_index {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.produtos_index p {
+  line-height: 1.4;
+}
+
+.card_index {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_index img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.nomeproduto_index {
+  margin-top: 10px;
+}
+
+.card-content_index {
+  padding: 15px;
+}
+
+.card_index h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.preco_index {
+  color: #d62828;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+
+}
+
+.preco_index_2 {
+  color: #d62828;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 35px;
+}
+
+.comprar_index {
+  display: block;
+  text-align: center;
+  background-color: #FF9900;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.comprar_index:hover {
+  background: #d62828;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.navbar-hq {
+  background: #ffd100;
+}
+
+.navbar-hq .navbar-brand {
+  font-family: "Bangers", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.navbar-hq .nav-link {
+  color: #000;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.navbar-hq .nav-link:hover {
+  color: #e30613;
+}
+
+.navbar-hq .nav-link.active {
+  color: #e30613 !important;
+}
+
+/* Formulários funcionais nos produtos antigos */
+.hq-form-carrinho {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap
+}
+
+.hq-form-carrinho input[type=number] {
+  width: 76px;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 6px
+}
+
+.hq-form-carrinho button {
+  border: 0;
+  background: #111;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 7px;
+  font-weight: 700
+}
+
+.hq-form-carrinho button:hover {
+  background: #c51f2d
+}
+
+.hq-frete-resultado {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff8cf;
+  border-left: 5px solid #ffd100;
+  display: none
+}
+
+.hq-frete-erro {
+  background: #ffe5e8;
+  border-left-color: #c51f2d
+}
+
+/* ==========================================================
+   AÇÕES DOS CARDS
+   Verde: ação de navegação "Ver Mais".
+   Amarelo: ação principal "Adicionar ao Carrinho".
+========================================================== */
+
+.card-content_index {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content_index .preco_index,
+.card-content_index .preco_index_2 {
+  margin-top: auto;
+}
+
+.card-content_index form {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.comprar_index {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.comprar_index.ver-mais {
+  background: #198754;
+  color: #fff;
+}
+
+.comprar_index.ver-mais:hover {
+  background: #146c43;
+  color: #fff;
+}
+
+.comprar_index.adicionar-carrinho {
+  background: #ffd100;
+  color: #111;
+}
+
+.comprar_index.adicionar-carrinho:hover {
+  background: #e5bc00;
+  color: #111;
+}
+
+/* ==========================================================
+   CATÁLOGOS DE TEMAS PADRONIZADOS
+   Mangás.php, marvel.php e Dc.php
+========================================================== */
+
+.catalogo-padronizado .mangas-grid,
+.mangas-grid.catalogo-temas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  align-items: stretch;
+}
+
+.catalogo-padronizado .card_loja,
+.mangas-grid.catalogo-temas .card_loja {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+}
+
+.catalogo-padronizado .card_loja > img,
+.catalogo-padronizado .card_loja a > img,
+.mangas-grid.catalogo-temas .card_loja > img,
+.mangas-grid.catalogo-temas .card_loja a > img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+@media (max-width: 1050px) {
+  .catalogo-padronizado .mangas-grid,
+  .mangas-grid.catalogo-temas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .catalogo-padronizado .mangas-grid,
+  .mangas-grid.catalogo-temas {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   BOTÕES DOS CARDS — AJUSTE FINAL
+========================================================== */
+
+.card-content_index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.card-content_index .preco_index,
+.card-content_index .preco_index_2 {
+  margin-top: auto;
+}
+
+.card-content_index > .comprar_index,
+.card-content_index > form,
+.pesquisa-acoes > .comprar_index,
+.pesquisa-acoes > form {
+  width: auto;
+  min-width: 170px;
+  max-width: 210px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-self: flex-start;
+}
+
+.comprar_index {
+  min-height: 40px;
+  padding: 9px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.comprar_index.ver-mais {
+  background: #198754;
+  color: #fff;
+}
+
+.comprar_index.ver-mais:hover {
+  background: #146c43;
+}
+
+.comprar_index.adicionar-carrinho {
+  width: 100%;
+  background: #ffd100;
+  color: #111;
+}
+
+.comprar_index.adicionar-carrinho:hover {
+  background: #e5bc00;
+}
+
+/* ==========================================================
+   TRAILER HERO_2 RESTAURADO
+========================================================== */
+
+.hero_2 {
+  width: 100%;
+  min-height: 500px;
+  padding: 26px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.hero_2 .hero-content {
+  width: min(670px, 100%);
+  padding: 26px;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .65);
+}
+
+.hero_2 iframe {
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 0;
+}
