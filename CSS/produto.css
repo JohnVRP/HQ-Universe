@@ -1,0 +1,71 @@
+/* Página dinâmica produto.php */
+.pagina-produto .detalhe-produto {
+  display: grid;
+  grid-template-columns: minmax(280px, 450px) 1fr;
+  gap: 40px;
+}
+.pagina-produto .detalhe-produto > img {
+  width: 100%;
+  max-height: 620px;
+  object-fit: contain;
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+}
+.pagina-produto .detalhe-produto h1 {
+  border-left: 8px solid #ffd100;
+  padding-left: 15px;
+}
+@media (max-width: 950px) {
+  .pagina-produto .detalhe-produto {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   INDICADOR DISCRETO DE ESTOQUE
+========================================================== */
+
+.hq-estoque-produto {
+  width: fit-content;
+  margin: 2px 0 4px;
+  padding: 7px 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cfe7d5;
+  border-radius: 7px;
+  background: #f5fbf7;
+  color: #27643a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hq-estoque-produto::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #2e8b57;
+}
+
+.hq-estoque-produto.estoque-baixo {
+  border-color: #ead99c;
+  background: #fffaf0;
+  color: #806000;
+}
+
+.hq-estoque-produto.estoque-baixo::before {
+  background: #d39e00;
+}
+
+.hq-estoque-produto.sem-estoque {
+  border-color: #efc6ca;
+  background: #fff6f7;
+  color: #a4161a;
+}
+
+.hq-estoque-produto.sem-estoque::before {
+  background: #d62828;
+}

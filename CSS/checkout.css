@@ -1,0 +1,20 @@
+/* Página: checkout.php */
+.pagina-checkout .checkout-layout {
+  grid-template-columns: minmax(0, 1fr) 380px;
+  align-items: start;
+}
+
+.pagina-checkout .resumo {
+  position: sticky;
+  top: 155px;
+}
+
+@media (max-width: 950px) {
+  .pagina-checkout .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pagina-checkout .resumo {
+    position: static;
+  }
+}

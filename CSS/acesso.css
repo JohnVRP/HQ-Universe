@@ -1,0 +1,5 @@
+/* Login e registro */
+.pagina-acesso .formulario {
+  width: min(560px, 92%);
+  margin: 45px auto;
+}

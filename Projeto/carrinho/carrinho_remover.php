@@ -1,0 +1,1 @@
+<?php session_start(); require_once __DIR__ . '/../Arquivos/funcoes.php';$id=filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);unset($_SESSION['carrinho'][$id]);header('Location: '.url('carrinho.php'));exit;

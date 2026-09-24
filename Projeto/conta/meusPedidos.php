@@ -1,0 +1,9 @@
+<?php require_once __DIR__ . '/../Arquivos/verificarLogin.php'; require_once __DIR__ . '/../Arquivos/conexao.php'; $st=$pdo->prepare("SELECT p.*,f.nome forma FROM pedidos p JOIN formas_pagamento f ON f.id=p.forma_pagamento_id WHERE p.usuario_id=? ORDER BY p.id DESC");$st->execute([$_SESSION['id']]);$pedidos=$st->fetchAll();?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meus Pedidos</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../CSS/pedidos.css?v=60">
+
+  <link rel="stylesheet" href="../../CSS/estilo_jvrp.css?v=60">
+  <link rel="stylesheet" href="../../CSS/funcionalidades.css?v=60">
+</head><body class="pagina-pedidos">
+  <?php require_once __DIR__ . '/../Arquivos/cabecalho.php'; ?>
+  <main class="conteudo limite"><h1>📦 Meus Pedidos</h1><?php if(!$pedidos):?><div class="vazio">Você ainda não realizou pedidos.</div><?php endif;?><?php foreach($pedidos as $p):?><section class="painel" style="margin-bottom:18px"><h2>Pedido #<?=$p['id']?> <span class="status status-<?=e($p['status'])?>"><?=e(ucfirst($p['status']))?></span></h2><p><?=date('d/m/Y H:i',strtotime($p['data_pedido']))?> · <?=e($p['forma'])?> · <b><?=moeda((float)$p['valor_total'])?></b></p><?php $it=$pdo->prepare('SELECT i.*,pr.nome FROM itens_pedido i JOIN produtos pr ON pr.id=i.produto_id WHERE i.pedido_id=?');$it->execute([$p['id']]);?><table class="tabela"><?php foreach($it as $i):?><tr><td><?=e($i['nome'])?></td><td><?=$i['quantidade']?>x</td><td><?=moeda((float)$i['preco_unitario'])?></td></tr><?php endforeach;?></table></section><?php endforeach;?></main><?php require_once __DIR__ . '/../Arquivos/rodape.php';?></body></html>

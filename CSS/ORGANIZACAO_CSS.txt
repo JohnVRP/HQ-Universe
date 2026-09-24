@@ -1,0 +1,38 @@
+ORGANIZAÇÃO DOS CSS — HQ UNIVERSE
+
+estilo_jvrp.css
+  Identidade visual geral, página inicial, catálogos, banners e cards.
+
+funcionalidades.css
+  Componentes compartilhados: cabeçalho, rodapé, menus, newsletter,
+  botões gerais, alertas e elementos usados em várias páginas.
+
+compra_jvrp.css
+  Páginas individuais de produto e compra.
+
+carrinho.css
+  carrinho.php
+
+checkout.css
+  checkout.php
+
+pesquisa.css
+  pesquisa.php
+
+perfil.css
+  meuPerfil.php, editarCadastro.php e encerrarConta.php
+
+pedidos.css
+  meusPedidos.php
+
+institucional.css
+  termos, políticas, regulamentos, prazos, pagamento e FAQ.
+
+acesso.css
+  login.php e registrar.php
+
+admin.css
+  Área administrativa.
+
+Os CSS específicos são carregados depois dos CSS gerais para que
+os ajustes de cada página tenham prioridade sem duplicar links manualmente.

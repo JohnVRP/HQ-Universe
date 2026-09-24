@@ -1,0 +1,1 @@
+<?php require_once __DIR__ . '/../Arquivos/verificarAdmin.php';require_once __DIR__ . '/../Arquivos/conexao.php';$ok=['pendente','pago','enviado','entregue','cancelado'];$s=$_POST['status']??'';if(in_array($s,$ok,true))$pdo->prepare('UPDATE pedidos SET status=? WHERE id=?')->execute([$s,(int)$_POST['id']]);header('Location: pedidos.php');exit;

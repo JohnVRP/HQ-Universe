@@ -1,0 +1,1089 @@
+/* ==========================================================
+   HQ UNIVERSE — FUNCIONALIDADES COMPARTILHADAS
+   Finalidade:
+   - cabeçalho e menus
+   - menu móvel
+   - pop-up do carrinho
+   - estruturas funcionais (formulários, alertas, tabelas)
+   - carrinho, checkout, perfil, pedidos e área administrativa
+   - newsletter, rodapé e páginas institucionais
+
+   Não contém:
+   - catálogo, banners e cards da página inicial
+   - layout da página individual de produto
+========================================================== */
+
+:root {
+  --amarelo: #ffd100;
+  --preto: #111;
+  --vermelho: #d62828;
+  --vermelho-escuro: #a4161a;
+  --branco: #fff;
+  --cinza-claro: #f4f4f4;
+  --borda: #ddd;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.limite {
+  width: min(1180px, 94%);
+  margin: 0 auto;
+}
+
+.conteudo {
+  min-height: 65vh;
+  padding: 42px 0;
+}
+
+@keyframes hqToastEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   BOTÕES, FORMULÁRIOS E PAINÉIS
+========================================================== */
+
+.botao,
+.botao-secundario,
+button.botao {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.botao {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.botao:hover {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+.botao-secundario {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+.botao-secundario:hover {
+  background: #e5bc00;
+}
+
+.painel,
+.formulario,
+.resumo,
+.tabela-caixa,
+.vazio {
+  padding: 25px;
+  border-radius: 10px;
+  background: var(--branco);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  font-weight: 700;
+}
+
+.campo input,
+.campo select,
+.campo textarea,
+select,
+textarea,
+input[type="number"] {
+  padding: 11px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.campo textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ==========================================================
+   ALERTAS
+========================================================== */
+
+.alerta {
+  width: min(1180px, 94%);
+  margin: 18px auto;
+  padding: 13px 16px;
+  border-radius: 7px;
+}
+
+.alerta-sucesso {
+  background: #dff5e5;
+  color: #145d2d;
+}
+
+.alerta-erro {
+  background: #fde2e2;
+  color: #8c1420;
+}
+
+/* ==========================================================
+   TABELAS
+========================================================== */
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--branco);
+}
+
+.tabela th,
+.tabela td {
+  padding: 13px;
+  border-bottom: 1px solid var(--borda);
+  text-align: left;
+}
+
+.tabela th {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+/* ==========================================================
+   CARRINHO E CHECKOUT — ESTRUTURA BASE
+========================================================== */
+
+.carrinho-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px 130px 45px;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.carrinho-item img {
+  width: 80px;
+  height: 100px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.remover {
+  color: var(--vermelho);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+}
+
+.resumo p {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* ==========================================================
+   STATUS DE PEDIDOS
+========================================================== */
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.status-pago,
+.status-entregue {
+  background: #d9f4df;
+  color: #176b2d;
+}
+
+.status-cancelado {
+  background: #f8dadd;
+  color: #92202a;
+}
+
+.status-pendente,
+.status-enviado {
+  background: #fff0b8;
+  color: #795c00;
+}
+
+/* ==========================================================
+   ÁREA ADMINISTRATIVA
+========================================================== */
+
+.admin-menu {
+  margin-bottom: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-menu a {
+  padding: 10px 14px;
+  border-radius: 5px;
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.admin-menu a:hover {
+  background: var(--vermelho);
+}
+
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.metrica {
+  padding: 22px;
+  border-left: 6px solid var(--amarelo);
+  border-radius: 10px;
+  background: var(--branco);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+}
+
+.metrica b {
+  display: block;
+  font-size: 30px;
+}
+
+/* ==========================================================
+   NEWSLETTER
+========================================================== */
+
+.hq-newsletter {
+  padding: 38px 20px;
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+.hq-newsletter-inner {
+  width: min(1180px, 94%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.hq-newsletter h2 {
+  margin: 0 0 6px;
+  font-family: "Bebas Neue", Arial, sans-serif;
+  font-size: 38px;
+}
+
+#hq-newsletter-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+#hq-newsletter-form input {
+  min-width: 0;
+  padding: 13px 15px;
+  border: 2px solid var(--preto);
+  border-radius: 7px;
+}
+
+#hq-newsletter-form button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--preto);
+  color: var(--branco);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#hq-newsletter-msg {
+  grid-column: 1 / -1;
+  min-height: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#hq-newsletter-msg.sucesso {
+  color: #16602d;
+}
+
+#hq-newsletter-msg.erro {
+  color: var(--vermelho-escuro);
+}
+
+/* ==========================================================
+   RODAPÉ COMPARTILHADO
+========================================================== */
+
+.hq-rodape {
+  margin: 0;
+  padding: 42px 20px;
+  background: #282b33;
+  color: var(--branco);
+  text-align: left;
+}
+
+.hq-rodape-grid {
+  width: min(1180px, 94%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 55px;
+}
+
+.hq-rodape h3 {
+  margin: 0 0 16px;
+  color: var(--branco);
+  font-size: 18px;
+}
+
+.hq-rodape a {
+  margin: 0 0 13px;
+  display: block;
+  color: var(--branco) !important;
+  text-decoration: none !important;
+}
+
+.hq-rodape a:hover {
+  color: var(--amarelo) !important;
+}
+
+.hq-rodape-marca strong {
+  color: var(--amarelo);
+  font-family: "Bangers", cursive;
+  font-size: 32px;
+}
+
+.hq-rodape-marca p {
+  max-width: 330px;
+  margin: 12px 0 20px;
+}
+
+/* ==========================================================
+   PÁGINAS INSTITUCIONAIS — BASE
+========================================================== */
+
+.hq-institucional {
+  width: min(900px, 92%);
+  min-height: 55vh;
+  margin: 45px auto;
+}
+
+.hq-institucional article {
+  padding: 34px;
+  border-top: 7px solid var(--amarelo);
+  border-radius: 12px;
+  background: var(--branco);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .12);
+}
+
+.hq-institucional h1 {
+  font-family: "Bebas Neue", Arial, sans-serif;
+  font-size: 46px;
+}
+
+.hq-institucional p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ==========================================================
+   FORMULÁRIOS DE ADIÇÃO AO CARRINHO
+========================================================== */
+
+form[action*="carrinho_adicionar.php"] {
+  margin-top: 10px;
+}
+
+form[action*="carrinho_adicionar.php"] button {
+  cursor: pointer;
+}
+
+/* ==========================================================
+   RESPONSIVIDADE
+========================================================== */
+
+@media (max-width: 1100px) {
+  .hq-topo-wrap>.hq-topo.hq-container {
+    width: min(980px, 96%);
+    grid-template-columns: 170px minmax(300px, 1fr) max-content;
+    column-gap: 16px;
+  }
+
+  .hq-pesquisa {
+    max-width: none;
+  }
+
+  .hq-marca {
+    font-size: 27px;
+  }
+
+  .hq-acoes {
+    gap: 9px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 950px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .metricas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+
+  .hq-newsletter-inner,
+  .hq-rodape-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #hq-newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metricas {
+    grid-template-columns: 1fr;
+  }
+
+  .carrinho-item {
+    grid-template-columns: 64px 1fr 70px;
+  }
+}
+
+/* Desktop: mantém tudo em uma única linha. */
+@media (min-width: 993px) {
+  .hq-topo-wrap>.hq-topo.hq-container {
+    width: min(1280px, 94%);
+    max-width: 1280px;
+    grid-template-columns: 190px minmax(420px, 560px) max-content;
+  }
+
+  .hq-pesquisa {
+    width: 100%;
+    min-width: 420px;
+    max-width: 560px;
+  }
+
+  .hq-mobile-toggle {
+    display: none;
+  }
+
+  .hq-mobile-menu {
+    position: static;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Mobile somente em telas realmente menores. */
+@media (max-width: 720px) {
+  .hq-avatar-link {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .hq-avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Bootstrap não é obrigatório para ocultar rótulos acessíveis. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ==========================================================
+   AJUSTE SEGURO DA BARRA DE PESQUISA
+   Mantém todos os estilos originais do projeto.
+========================================================== */
+
+@media (min-width: 993px) {
+  .hq-topo-wrap>.hq-topo.hq-container {
+    width: min(1380px, 96%);
+    max-width: 1380px;
+    grid-template-columns: 190px 560px max-content;
+    column-gap: 24px;
+  }
+
+  .hq-topo-wrap .hq-pesquisa {
+    width: 560px;
+    min-width: 560px;
+    max-width: 560px;
+    flex: 0 0 560px;
+    justify-self: center;
+  }
+
+  .hq-topo-wrap .hq-pesquisa input {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+  }
+
+  .hq-topo-wrap .hq-pesquisa button {
+    width: 104px;
+    min-width: 104px;
+    max-width: 104px;
+    flex: 0 0 104px;
+    box-sizing: border-box;
+  }
+}
+
+/* ==========================================================
+   CABEÇALHO ÚNICO — MODELO DO PESQUISA.PHP
+========================================================== */
+.hq-topo-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  background: #ffd100;
+  font-family: "Poppins", Arial, sans-serif;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, .22)
+}
+
+.hq-topo-wrap>.hq-topo.hq-container {
+  position: relative;
+  width: min(1380px, 96%);
+  max-width: 1380px;
+  min-height: 82px;
+  margin: 0 auto;
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 190px 560px max-content;
+  align-items: center;
+  justify-content: center;
+  column-gap: 24px;
+  background: #ffd100
+}
+
+.hq-marca {
+  justify-self: start;
+  margin: 0;
+  padding: 0;
+  color: #111 !important;
+  font-family: "Bangers", cursive;
+  font-size: 31px;
+  letter-spacing: 1px;
+  text-decoration: none !important;
+  white-space: nowrap
+}
+
+.hq-pesquisa {
+  width: 560px;
+  min-width: 560px;
+  max-width: 560px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-self: center;
+  flex: 0 0 560px
+}
+
+.hq-pesquisa input {
+  width: auto;
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 10px 15px;
+  border: 2px solid #111;
+  border-right: 0;
+  border-radius: 24px 0 0 24px;
+  outline: 0;
+  background: #fff;
+  box-sizing: border-box
+}
+
+.hq-pesquisa button {
+  width: 104px;
+  min-width: 104px;
+  max-width: 104px;
+  flex: 0 0 104px;
+  padding: 0 18px;
+  border: 2px solid #111;
+  border-radius: 0 24px 24px 0;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box
+}
+
+.hq-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap
+}
+
+.hq-ola {
+  color: #111;
+  white-space: nowrap
+}
+
+.hq-nome-usuario {
+  color: #2563a6;
+  font-weight: 800
+}
+
+.hq-mobile-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.hq-mobile-toggle {
+  display: none;
+  padding: 7px 11px;
+  border: 0;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer
+}
+
+.hq-painel-admin {
+  min-height: 40px;
+  padding: 0 15px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #111;
+  border-radius: 9px;
+  background: #111;
+  color: #fff !important;
+  font-weight: 800;
+  text-decoration: none !important
+}
+
+.hq-painel-admin:hover,
+.hq-painel-admin:focus,
+.hq-painel-admin:visited {
+  background: #2b2b2b;
+  color: #fff !important
+}
+
+.hq-icone-acao {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(17, 17, 17, .72);
+  border-radius: 50%;
+  background: #fff;
+  color: #111 !important;
+  text-decoration: none !important
+}
+
+.hq-avatar {
+  width: 36px;
+  height: 36px;
+  display: block;
+  border: 0;
+  border-radius: 50%;
+  object-fit: cover
+}
+
+.hq-pedidos-icone,
+.hq-carrinho-icone {
+  display: block;
+  font-size: 21px;
+  line-height: 1
+}
+
+.hq-carrinho-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffd100;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800
+}
+
+.hq-acoes .hq-sair {
+  min-height: 40px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9px;
+  background: #d62828;
+  color: #fff !important;
+  text-decoration: none !important
+}
+
+.hq-categorias {
+  width: 100%;
+  background: #111;
+  color: #fff
+}
+
+.hq-cat-inner {
+  width: min(1380px, 96%);
+  min-height: 48px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 70px
+}
+
+.hq-menu-item {
+  position: relative
+}
+
+.hq-menu-item>a {
+  height: 100%;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important
+}
+
+.hq-menu-item:hover>a {
+  background: #ffd100;
+  color: #111 !important
+}
+
+.hq-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2100;
+  min-width: 250px;
+  padding: 10px;
+  display: none;
+  grid-template-columns: 1fr;
+  border-radius: 0 0 8px 8px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .28)
+}
+
+.hq-menu-item:hover .hq-submenu {
+  display: grid
+}
+
+.hq-submenu a {
+  padding: 9px 12px;
+  border-radius: 5px;
+  color: #222 !important;
+  text-decoration: none !important
+}
+
+.hq-submenu a:hover {
+  background: #ffd100;
+  color: #111 !important
+}
+
+.hq-cart-toast {
+  position: absolute;
+  right: 0;
+  top: calc(100% - 4px);
+  z-index: 2200;
+  width: min(310px, calc(100vw - 32px));
+  padding: 13px 38px 13px 14px;
+  display: none;
+  border-left: 5px solid #ffd100;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 9px 28px rgba(0, 0, 0, .28)
+}
+
+.hq-cart-toast.visivel {
+  display: block
+}
+
+.hq-toast-fechar {
+  position: absolute;
+  top: 7px;
+  right: 9px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font-size: 22px;
+  cursor: pointer
+}
+
+@media(max-width:992px) {
+  .hq-topo-wrap>.hq-topo.hq-container {
+    width: 94%;
+    min-height: auto;
+    padding: 10px 0;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px
+  }
+
+  .hq-marca {
+    font-size: 25px
+  }
+
+  .hq-pesquisa {
+    grid-column: 1/-1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex-basis: auto
+  }
+
+  .hq-acoes {
+    grid-column: 2/4;
+    grid-row: 1;
+    position: relative;
+    margin-left: auto
+  }
+
+  .hq-mobile-toggle {
+    display: inline-block
+  }
+
+  .hq-mobile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 2300;
+    min-width: 220px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .28)
+  }
+
+  .hq-mobile-menu.aberto {
+    display: flex
+  }
+
+  .hq-cat-inner {
+    gap: 0;
+    overflow-x: auto
+  }
+
+  .hq-menu-item>a {
+    padding: 12px 14px
+  }
+}
+
+/* ========= LOGO Cabeçalho ========= */
+
+.hq-marca{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    flex-shrink:0;
+}
+
+.hq-logo{
+    width:205px;
+    height:58px;
+    object-fit:contain;
+    display:block;
+}
+
+@media (max-width:992px){
+
+    .hq-logo{
+        width:170px;
+        height:46px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hq-logo{
+        width:145px;
+        height:40px;
+    }
+
+}
+
+/* ==========================================================
+   LOGO DO RODAPÉ
+========================================================== */
+
+.hq-rodape-marca {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hq-rodape-logo-link {
+  width: fit-content;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.hq-rodape-logo {
+  width: 205px;
+  height: 42px;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.hq-rodape-marca p {
+  max-width: 310px;
+  margin: 0 0 22px;
+  line-height: 1.45;
+}
+
+.hq-rodape-marca small {
+  display: block;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .hq-rodape-marca {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hq-rodape-logo-link {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hq-rodape-logo {
+    width: 135px;
+    height: 40px;
+    object-position: center;
+  }
+
+  .hq-rodape-marca p {
+    max-width: 360px;
+  }
+}
+/* ==========================================================
+   ALINHAMENTO DO CABEÇALHO COM O CONTEÚDO PRINCIPAL
+   Alinha a borda esquerda da logo e a borda direita das ações
+   com o mesmo limite de .container_index (90% / 1200px).
+========================================================== */
+@media (min-width: 993px) {
+  .hq-topo-wrap > .hq-topo.hq-container {
+    width: min(1200px, 90%);
+    max-width: 1200px;
+    grid-template-columns: 205px 1fr max-content;
+    justify-content: stretch;
+  }
+
+  .hq-topo-wrap .hq-pesquisa {
+    justify-self: center;
+  }
+
+  .hq-topo-wrap .hq-acoes {
+    justify-self: end;
+  }
+}
+
+/* ==========================================================
+   PADRONIZACAO DA ALTURA DA BARRA DE PESQUISA
+   Garante a mesma altura no pesquisa.php e nas demais paginas.
+========================================================== */
+.hq-topo-wrap .hq-pesquisa {
+  height: 42px;
+}
+
+.hq-topo-wrap .hq-pesquisa input,
+.hq-topo-wrap .hq-pesquisa button {
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  margin: 0;
+  line-height: normal;
+}
+
+/* Padroniza a fonte da pesquisa com o restante do site */
+.hq-topo-wrap .hq-pesquisa input,
+.hq-topo-wrap .hq-pesquisa button {
+    font-family: inherit !important;
+    font-size: 14px;
+}
+
+.hq-topo-wrap .hq-pesquisa input::placeholder {
+    font-family: inherit !important;
+    font-size: 14px;
+}

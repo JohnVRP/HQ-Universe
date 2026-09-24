@@ -1,0 +1,28 @@
+/* Área administrativa */
+.pagina-admin .conteudo {
+  width: min(1400px, 96%);
+}
+
+.pagina-admin .tabela-caixa {
+  overflow-x: auto;
+}
+
+.pagina-admin .tabela {
+  min-width: 820px;
+}
+
+/* ==========================================================
+   AVATAR DO ADMINISTRADOR
+========================================================== */
+
+.admin-avatar-img {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  display: block;
+  border: 4px solid #ffd100;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .16);
+}
