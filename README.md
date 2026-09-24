@@ -11,7 +11,7 @@ O **HQ Universe** é um site de e-commerce desenvolvido para a venda e organiza�
 - PHP
 - MySQL
 
-## Funcionalidades
+## Funcionalidadesf
 
 - Catálogo dividido por categorias
 - Pesquisa de produtos
