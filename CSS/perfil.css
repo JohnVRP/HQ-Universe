@@ -50,6 +50,26 @@
   background: #fff;
 }
 
+.perfil-remover-foto {
+  width: fit-content;
+  min-height: 36px;
+  padding: 7px 13px;
+  border: 1px solid #b4232f;
+  border-radius: 7px;
+  background: #fff;
+  color: #b4232f;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.perfil-remover-foto:hover,
+.perfil-remover-foto:focus {
+  background: #b4232f;
+  color: #fff;
+}
+
 .perfil-foto-controles small {
   color: #666;
 }
@@ -210,3 +230,18 @@
   }
 }
 
+.perfil-remover-foto {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.perfil-remover-foto:hover {
+    background-color: #b02a37;
+    border-color: #b02a37;
+}

@@ -36,8 +36,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   <!-- HERO -->
   <section class="hero" aria-label="HQ Universe">
     <picture>
-      <source srcset="../imagens/banner_hq_universe.webp" type="image/webp">
-      <img class="hero-banner" src="../imagens/banner_hq_universe.png"
+      <img class="hero-banner" src="../imagens/logo_ofc.png"
         width="1920" height="700" fetchpriority="high"
         alt="HQ Universe. Mergulhe no seu universo de leitura. A maior coleção de HQs e mangás do Brasil.">
     </picture>

@@ -39,6 +39,26 @@ function fotoPerfilUrl(?string $foto): string
  *
  * @return string|null Caminho relativo salvo no banco ou null quando nenhum arquivo foi enviado.
  */
+/**
+ * Remove a foto personalizada do perfil e volta a usar o avatar padrão.
+ */
+function removerFotoPerfil(PDO $pdo, int $usuarioId, ?string $fotoAtual = null): void
+{
+    $fotoAtual = ltrim(trim((string) $fotoAtual), '/');
+
+    // Só permite apagar arquivos dentro da pasta de perfis do próprio projeto.
+    if ($fotoAtual !== '' && str_starts_with($fotoAtual, 'uploads/perfis/')) {
+        $arquivoAtual = dirname(__DIR__) . '/' . $fotoAtual;
+
+        if (is_file($arquivoAtual)) {
+            @unlink($arquivoAtual);
+        }
+    }
+
+    $stmt = $pdo->prepare('UPDATE usuarios SET foto = NULL WHERE id = ?');
+    $stmt->execute([$usuarioId]);
+}
+
 function salvarFotoPerfil(array $arquivo, int $usuarioId, ?string $fotoAtual = null): ?string
 {
     if (($arquivo['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
