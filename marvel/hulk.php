@@ -32,7 +32,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 </style>
 
 <body>
-  <?php require_once __DIR__ . '/../../../../Projeto/Arquivos/cabecalho.php'; ?>
+  <?php require_once __DIR__ . '/../Projeto/Arquivos/cabecalho.php'; ?>
   
 
     

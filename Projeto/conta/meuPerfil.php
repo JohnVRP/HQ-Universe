@@ -26,6 +26,15 @@ if (!$u) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        // A remoção da foto é uma ação independente de salvar os demais dados.
+        if (isset($_POST['remover_foto']) && $_POST['remover_foto'] === '1') {
+            removerFotoPerfil($pdo, $usuarioId, $u['foto'] ?? null);
+
+            flash('sucesso', 'Foto de perfil removida com sucesso.');
+            header('Location: meuPerfil.php');
+            exit;
+        }
+
         $nome = trim((string) ($_POST['nome'] ?? ''));
         $sobrenome = trim((string) ($_POST['sobrenome'] ?? ''));
         $email = trim((string) ($_POST['email'] ?? ''));
@@ -156,6 +165,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             type="file"
             accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
           >
+
+          <button
+            class="perfil-remover-foto"
+            type="submit"
+            name="remover_foto"
+            value="1"
+            onclick="return confirm('Deseja realmente remover sua foto de perfil?');"
+          >
+            Remover foto
+          </button>
+
           <small>JPG, PNG ou WEBP, com no máximo 2 MB.</small>
         </div>
       </section>

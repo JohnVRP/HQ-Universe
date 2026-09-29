@@ -222,7 +222,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
                         <h2>Mangás</h2>
                         <p>Descubra grandes histórias japonesas, dos clássicos aos títulos mais procurados da
                             atualidade.</p>
-                        <a class="colecao-botao" href="Mangás.php">Acessar</a>
+                        <a class="colecao-botao" href="Mangas.php">Acessar</a>
                     </div>
                 </article>
 
