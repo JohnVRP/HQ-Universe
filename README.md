@@ -179,7 +179,7 @@ Projeto acadêmico desenvolvido por:
 
 ## 📌 Status
 
-🟡 Projeto acadêmico em desenvolvimento e aprimoramento.
+🟢 Projeto acadêmico conclúido, mas em aprimoramento contínuo.
 
 ---
 
