@@ -172,7 +172,7 @@ O projeto trabalha conceitos como:
 
 Projeto acadêmico desenvolvido por:
 
-- **João Vitor Rodrigues Pinheiro**
+- **JOAO VITOR RODRIGUES PINHEIRO**
 - **JOAO VICTOR MATOS DE ALMEIDA**
 - **ARTHUR RODRIGUES MINESSO RIBEIRO**
 ---
